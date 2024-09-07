@@ -1,2 +1,25 @@
 # memguard
-C library for enhanced malloc() and free() with memory tracking and limiting
+C library for enhanced malloc() and free() with memory tracking and limiting.
+
+Memory Guard Usage Guide
+
+1. Include the header:
+   #include "memguard.h"
+
+2. Initialize the memory guard:
+   Call init_memguard(size_t limit) at the beginning of your program to set the memory usage limit.
+   Example: init_memguard(1024 * 1024); // Set 1MB limit
+
+3. Use memory allocation functions:
+   - Use mg_malloc(size_t size) instead of malloc()
+   - Use mg_free(void* ptr) instead of free()
+
+4. Monitor memory usage:
+   - mg_get_usage() returns the current memory usage
+   - mg_get_limit() returns the set memory limit
+
+5. Compilation:
+   Compile your program with memguard.c
+   Example: gcc -o your_program your_program.c memguard.c
+
+Note: The library will automatically prevent allocations that would exceed the set limit.
